@@ -20,12 +20,13 @@ class SplashScreenActivity : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        displayRandomFunFact()
+        //displayRandomFunFact()
         redirect()
     }
 
     private fun displayRandomFunFact() {
         // BIND FUN FACT
+        // APPLY ANIMATIONS
     }
 
     private fun redirect() {

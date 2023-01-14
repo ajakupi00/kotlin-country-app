@@ -1,8 +1,7 @@
 package jakupi.arjan.country
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewbinding.ViewBinding
+import androidx.appcompat.app.AppCompatActivity
 import jakupi.arjan.country.databinding.ActivityMainBinding
 
 class HostActivity : AppCompatActivity() {
@@ -12,6 +11,7 @@ class HostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
     }
 }

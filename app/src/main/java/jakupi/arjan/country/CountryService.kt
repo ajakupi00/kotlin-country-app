@@ -3,13 +3,14 @@ package jakupi.arjan.country
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.JobIntentService
+import jakupi.arjan.country.api.CountryFetcher
 
 private const val JOB_ID = 1
 @Suppress("DEPRECATION")
 class CountryService : JobIntentService() {
 
     override fun onHandleWork(intent: Intent) {
-        Thread.sleep(3000L)
+        CountryFetcher(this).fetchItems(10)
     }
 
     companion object {

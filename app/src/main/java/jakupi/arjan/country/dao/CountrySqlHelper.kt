@@ -23,7 +23,7 @@ private val CREATE_TABLE = "create table $TABLE_NAME( " +
         ")"
 private const val DROP_TABLE = "drop table $TABLE_NAME"
 
-class CountrySqlHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION), CountryRepository {
+class CountrySqlHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION), CountryRepository {
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE)
     }
