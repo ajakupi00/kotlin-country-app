@@ -47,7 +47,7 @@ fun Context.getBooleanPreference(key: String) =
     PreferenceManager.getDefaultSharedPreferences(this)
         .getBoolean(key, false)
 
-/*fun Context.isOnline() : Boolean{
+fun Context.isOnline() : Boolean{
     val connectivityManager = getSystemService<ConnectivityManager>()
     connectivityManager?.activeNetwork?.let { network ->
         connectivityManager.getNetworkCapabilities(network)?.let { cap ->
@@ -57,7 +57,7 @@ fun Context.getBooleanPreference(key: String) =
     }
     return false
 }
-*/
+
 
 fun callDelayed(delay: Long, runnable: Runnable) {
     Handler(Looper.getMainLooper()).postDelayed(
