@@ -20,7 +20,7 @@ data class Name(
 )
 
 data class Flags (
-    @SerializedName("svg" ) var svg : String
+    @SerializedName("png" ) var svg : String
 
 )
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/countries"
+        android:icon="@drawable/flags"
+        android:id="@+id/menuCountries" />
+    <item
+        android:title="@string/favorites"
+        android:icon="@drawable/favorite"
+        android:id="@+id/menuFavorites" />
+    <item
+        android:title="@string/about"
+        android:icon="@drawable/about"
+        android:id="@+id/menuAbout" />
+
+</menu>

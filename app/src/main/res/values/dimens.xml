@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="splashPaddingMain">50dp</dimen>
+    <dimen name="countryPadding">10dp</dimen>
+    <dimen name="ivSize">30dp</dimen>
+    <dimen name="tvMarginLeft">20dp</dimen>
+    <dimen name="countryTextSize">20sp</dimen>
+    <dimen name="ivPagerHeight">300dp</dimen>
+    <dimen name="marginTop">10dp</dimen>
+    <dimen name="navHeaderWidth">150dp</dimen>
+    <dimen name="navHeaderHeight">100dp</dimen>
+    <dimen name="navHeaderMarginTop">25dp</dimen>
+    <dimen name="navViewWidth">162dp</dimen>
+    <dimen name="navViewHeight">300dp</dimen>
 </resources>

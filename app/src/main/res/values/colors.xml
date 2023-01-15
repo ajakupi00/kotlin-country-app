@@ -6,4 +6,5 @@
     <color name="myDarkOrange">#f58a07</color>
     <color name="black">#000000</color>
     <color name="myLightPurple">#bb86fc</color>
+    <dimen name="cornerRadius">9dp</dimen>
 </resources>

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Country</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="countryName">Name:</string>
+    <string name="capital">Capital:</string>
+    <string name="population">Population:</string>
+    <string name="timeZone">Timezone:</string>
+    <string name="continent">Continent:</string>
+    <string name="countries">Countries</string>
+    <string name="about">About</string>
+    <string name="favorites">Favorites</string>
+    <string name="exit">Exit</string>
+    <string name="really">Are you sure?</string>
+    <string name="cancel">Cancel</string>
 </resources>

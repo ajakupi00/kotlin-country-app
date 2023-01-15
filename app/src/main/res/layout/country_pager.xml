@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:padding="@dimen/countryPadding"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <ImageView
+          tools:src="@drawable/robot_ballon"
+          android:id="@+id/ivFlag"
+          android:layout_marginHorizontal="@dimen/ivSize"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/ivPagerHeight"/>
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/ivFavorite"
+            tools:src="@drawable/heart_nofill"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"/>
+
+        <LinearLayout
+            android:padding="@dimen/countryPadding"
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/countryName"
+                android:textColor="?colorOnPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvName"
+                tools:text="Repuclic Of Future"
+                android:layout_marginLeft="@dimen/tvMarginLeft"
+                android:textColor="?colorOnPrimary"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/countryPadding"
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/capital"
+                android:textColor="?colorOnPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCapital"
+                tools:text="Bucharest"
+                android:layout_marginLeft="@dimen/tvMarginLeft"
+                android:textColor="?colorOnPrimary"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/countryPadding"
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/population"
+                android:textColor="?colorOnPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPopulation"
+                tools:text="4 404 7200"
+                android:layout_marginLeft="@dimen/tvMarginLeft"
+                android:textColor="?colorOnPrimary"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/countryPadding"
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continent"
+                android:textColor="?colorOnPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvContinent"
+                tools:text="North America"
+                android:layout_marginLeft="@dimen/tvMarginLeft"
+                android:textColor="?colorOnPrimary"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/countryPadding"
+            android:background="@drawable/shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/timeZone"
+                android:textColor="?colorOnPrimary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTimeZone"
+                tools:text="UTC+01:00"
+                android:layout_marginLeft="@dimen/tvMarginLeft"
+                android:textColor="?colorOnPrimary"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

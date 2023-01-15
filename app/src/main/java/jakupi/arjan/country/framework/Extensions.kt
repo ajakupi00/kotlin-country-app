@@ -13,7 +13,10 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.content.getSystemService
 import androidx.preference.PreferenceManager
+import jakupi.arjan.country.COUNTRY_PROVIDER_CONTENT_URI
 import jakupi.arjan.country.HostActivity
+import jakupi.arjan.country.model.Country
+
 //import hr.algebra.nasa.NASA_PROVIDER_CONTENT_URI
 //import hr.algebra.nasa.NasaReceiver
 //import hr.algebra.nasa.model.Item
@@ -66,23 +69,26 @@ fun callDelayed(delay: Long, runnable: Runnable) {
     )
 }
 
-/*
+
 @SuppressLint("Range")
-fun Context.fetchItems() : MutableList<Item> {
-    val items = mutableListOf<Item>()
-    val cursor = contentResolver.query(NASA_PROVIDER_CONTENT_URI,
+fun Context.fetchCountries() : MutableList<Country> {
+    val countries = mutableListOf<Country>()
+    val cursor = contentResolver.query(
+        COUNTRY_PROVIDER_CONTENT_URI,
         null, null, null, null)
     while (cursor != null && cursor.moveToNext()) {
-        items.add(Item(
-            cursor.getLong(cursor.getColumnIndex(Item::_id.name)),
-            cursor.getString(cursor.getColumnIndex(Item::title.name)),
-            cursor.getString(cursor.getColumnIndex(Item::explanation.name)),
-            cursor.getString(cursor.getColumnIndex(Item::picturePath.name)),
-            cursor.getString(cursor.getColumnIndex(Item::date.name)),
-            cursor.getInt(cursor.getColumnIndex(Item::read.name)) == 1
+        countries.add(
+            Country(
+            cursor.getLong(cursor.getColumnIndex(Country::_id.name)),
+            cursor.getString(cursor.getColumnIndex(Country::name.name)),
+            cursor.getString(cursor.getColumnIndex(Country::capital.name)),
+            cursor.getInt(cursor.getColumnIndex(Country::population.name)),
+                cursor.getString(cursor.getColumnIndex(Country::timezone.name)),
+                cursor.getString(cursor.getColumnIndex(Country::continents.name)),
+                cursor.getString(cursor.getColumnIndex(Country::flagPath.name)),
+                cursor.getInt(cursor.getColumnIndex(Country::favorite.name)) == 1
         ))
     }
 
-    return items
+    return countries
 }
-*/
