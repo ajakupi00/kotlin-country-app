@@ -25,6 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
         // BIND FUN FACT
         // APPLY ANIMATIONS
         binding.tvSplash.applyAnimation(R.anim.blink)
+        binding.ivSplash.applyAnimation(R.anim.rotate)
     }
 
     private fun redirect() {
