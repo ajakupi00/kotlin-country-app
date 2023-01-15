@@ -16,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CountryApplication"
         tools:targetApi="31">
+
+        <provider
+            android:name=".CountryProvider"
+            android:authorities="jakupi.arjan.country.api.provider"
+            android:enabled="true"
+            android:exported="false" />
+
         <receiver
             android:name=".CountryReceiver"
             android:enabled="true"

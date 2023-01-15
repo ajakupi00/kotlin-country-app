@@ -3,10 +3,7 @@ package jakupi.arjan.country
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import jakupi.arjan.country.databinding.ActivitySplashScreenBinding
-import jakupi.arjan.country.framework.callDelayed
-import jakupi.arjan.country.framework.getBooleanPreference
-import jakupi.arjan.country.framework.isOnline
-import jakupi.arjan.country.framework.startActivity
+import jakupi.arjan.country.framework.*
 
 
 private const val DELAY = 3000L
@@ -27,6 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun displayRandomFunFact() {
         // BIND FUN FACT
         // APPLY ANIMATIONS
+        binding.tvSplash.applyAnimation(R.anim.blink)
     }
 
     private fun redirect() {

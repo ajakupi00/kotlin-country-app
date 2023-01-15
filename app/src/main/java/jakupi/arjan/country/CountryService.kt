@@ -10,7 +10,7 @@ private const val JOB_ID = 1
 class CountryService : JobIntentService() {
 
     override fun onHandleWork(intent: Intent) {
-        CountryFetcher(this).fetchItems(10)
+        CountryFetcher(this).fetchItems()
     }
 
     companion object {

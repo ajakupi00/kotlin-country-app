@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import jakupi.arjan.country.COUNTRY_PROVIDER_CONTENT_URI
+import jakupi.arjan.country.CountryReceiver
+import jakupi.arjan.country.framework.sendBroadcast
 import jakupi.arjan.country.handler.downloadImageAndStore
 import jakupi.arjan.country.model.Country
 import kotlinx.coroutines.GlobalScope
@@ -26,39 +28,42 @@ class CountryFetcher(private val context: Context) {
         countryApi = retrofit.create(CountryApi::class.java)
     }
 
-    fun fetchItems(count: Int){
-        val request = countryApi.fetchItems(count)
+    fun fetchItems(){
+        val request = countryApi.fetchItems()
 
-        request.enqueue(object: Callback<List<CountryItem>> {
+        request.enqueue(object : Callback<List<CountryItem>>{
             override fun onResponse(
                 call: Call<List<CountryItem>>,
                 response: Response<List<CountryItem>>
             ) {
-                response?.body()?.let {  populateItems(it) }
+                response?.body()?.let { populateItems(it) }
             }
 
             override fun onFailure(call: Call<List<CountryItem>>, t: Throwable) {
                 Log.e(javaClass.name, t.toString(), t)
             }
+
         })
     }
 
     private fun populateItems(countryItems: List<CountryItem>){
         GlobalScope.launch {
-            countryItems.forEach {
+            countryItems.subList(0, 10).forEachIndexed { index, it ->
                 var flagPath = downloadImageAndStore(context, it.flags.svg)
                 val values = ContentValues().apply {
                     put(Country::name.name, it.name.official)
                     put(Country::capital.name, it.capital[0])
                     put(Country::population.name, it.population)
                     put(Country::flagPath.name, flagPath)
-                    put(Country::currencies.name, it.currencies.XCD.name)
                     put(Country::timezone.name, concatStringArray(it.timezones))
                     put(Country::continents.name, concatStringArray(it.continents))
                     put(Country::favorite.name, false)
                 }
                 context.contentResolver.insert(COUNTRY_PROVIDER_CONTENT_URI, values)
             }
+
+            context.sendBroadcast<CountryReceiver>()
+
         }
     }
 

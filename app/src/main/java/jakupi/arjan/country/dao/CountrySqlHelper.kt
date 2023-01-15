@@ -7,19 +7,18 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import jakupi.arjan.country.model.Country
 
-private const val DB_NAME = "items.db"
+private const val DB_NAME = "countries.db"
 private const val DB_VERSION = 1
-private const val TABLE_NAME = "items"
+private const val TABLE_NAME = "country"
 private val CREATE_TABLE = "create table $TABLE_NAME( " +
         "${Country::_id.name} integer primary key autoincrement, " +
         "${Country::name.name} text not null, " +
         "${Country::capital.name} text not null, " +
-        "${Country::population} int not null, " +
-        "${Country::currencies} text not null, " +
-        "${Country::timezone} text not null, " +
-        "${Country::continents} text not null, " +
-        "${Country::flagPath} text not null, " +
-        "${Country::favorite} bit not null, " +
+        "${Country::population.name} text not null, " +
+        "${Country::timezone.name} text not null, " +
+        "${Country::continents.name} text not null, " +
+        "${Country::flagPath.name} text not null, " +
+        "${Country::favorite.name} integer not null" +
         ")"
 private const val DROP_TABLE = "drop table $TABLE_NAME"
 
@@ -37,8 +36,9 @@ class CountrySqlHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME, n
         writableDatabase.delete(TABLE_NAME, selection, selectionArgs)
 
 
-    override fun insert(values: ContentValues?) =
+    override fun insert(values: ContentValues?): Long =
         writableDatabase.insert(TABLE_NAME, null, values)
+
 
     override fun query(
         projection: Array<String>?,
