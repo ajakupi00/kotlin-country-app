@@ -12,4 +12,6 @@
     <dimen name="navHeaderMarginTop">25dp</dimen>
     <dimen name="navViewWidth">162dp</dimen>
     <dimen name="navViewHeight">300dp</dimen>
+    <dimen name="paddingAbout">20dp</dimen>
+    <dimen name="textSizeAbout">50sp</dimen>
 </resources>

@@ -17,7 +17,7 @@ class SplashScreenActivity : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //displayRandomFunFact()
+        displayRandomFunFact()
         redirect()
     }
 

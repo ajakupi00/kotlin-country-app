@@ -48,7 +48,7 @@ class CountryFetcher(private val context: Context) {
 
     private fun populateItems(countryItems: List<CountryItem>){
         GlobalScope.launch {
-            countryItems.subList(0, 10).forEachIndexed { index, it ->
+            countryItems.subList(0, 20).forEachIndexed { index, it ->
                 var flagPath = downloadImageAndStore(context, it.flags.svg)
                 val values = ContentValues().apply {
                     put(Country::name.name, it.name.official)
