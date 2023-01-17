@@ -2,8 +2,6 @@ package jakupi.arjan.country
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ProgressBar
-import androidx.core.content.ContentProviderCompat.requireContext
 import jakupi.arjan.country.api.CountryFetcher
 import jakupi.arjan.country.databinding.ActivitySplashScreenBinding
 import jakupi.arjan.country.framework.*
@@ -56,6 +54,6 @@ class SplashScreenActivity : AppCompatActivity() {
         for (i in 0..50){
             binding.progressBar.setProgress(i, true)
         }
-        startActivity<HostActivity>()
+        startActivity<MainActivity>()
     }
 }

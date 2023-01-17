@@ -10,6 +10,6 @@ class CountryReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         context.setBooleanPreference(DATA_IMPORTED)
-        context.startActivity<HostActivity>()
+        context.startActivity<MainActivity>()
     }
 }

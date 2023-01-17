@@ -10,11 +10,12 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import jakupi.arjan.country.databinding.ActivityMainBinding
 
-class HostActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
