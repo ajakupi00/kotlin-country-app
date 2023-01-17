@@ -1,5 +1,6 @@
 package jakupi.arjan.country.adapter
 
+import android.content.ContentUris
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import jakupi.arjan.country.COUNTRY_PROVIDER_CONTENT_URI
 import jakupi.arjan.country.CountryPagerActivity
 import jakupi.arjan.country.POSITION
 import jakupi.arjan.country.R
@@ -44,7 +46,7 @@ class FavoriteCountryAdapter(private val context: Context, private val countries
         val country = countries[position]
 
         holder.itemView.setOnLongClickListener{
-            //deleteItem(position)
+            deleteCountry(position)
             true
         }
 
@@ -53,6 +55,18 @@ class FavoriteCountryAdapter(private val context: Context, private val countries
         }
 
         holder.bind(country)
+    }
+
+    private fun deleteCountry(position: Int) {
+        val country = countries[position]
+        context.contentResolver.delete(
+            ContentUris.withAppendedId(COUNTRY_PROVIDER_CONTENT_URI, country._id!!),
+            null,
+            null
+        )
+        File(country.flagPath).delete()
+        countries.removeAt(position)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = countries.size
