@@ -22,7 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.progressBar.max = 50
+        binding.progressBar.max = CountryFetcher.NUMBER_OF_COUNTRIES_TO_FETCH
         displayRandomFunFact()
         redirect()
     }

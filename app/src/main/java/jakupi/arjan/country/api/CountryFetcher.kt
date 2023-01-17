@@ -20,6 +20,7 @@ import java.util.ArrayList
 class CountryFetcher(private val context: Context) {
     companion object{
         var PROGRESS_BAR_INDEX = 0
+        var NUMBER_OF_COUNTRIES_TO_FETCH = 50
     }
     private var countryApi: CountryApi
 
@@ -51,7 +52,7 @@ class CountryFetcher(private val context: Context) {
 
     private fun populateItems(countryItems: List<CountryItem>){
         GlobalScope.launch {
-            countryItems.subList(0, 50).forEachIndexed { index, it ->
+            countryItems.subList(0, NUMBER_OF_COUNTRIES_TO_FETCH).forEachIndexed { index, it ->
                 PROGRESS_BAR_INDEX = index
                 var flagPath = downloadImageAndStore(context, it.flags.svg)
                 val values = ContentValues().apply {

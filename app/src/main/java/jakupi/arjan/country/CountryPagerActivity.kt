@@ -33,5 +33,6 @@ class CountryPagerActivity : AppCompatActivity() {
         countryPosition = intent.getIntExtra(POSITION, countryPosition)
         binding.viewPager.adapter = CountryPagerAdapter(this, countries)
         binding.viewPager.currentItem = countryPosition
+        binding.viewPager
     }
 }
