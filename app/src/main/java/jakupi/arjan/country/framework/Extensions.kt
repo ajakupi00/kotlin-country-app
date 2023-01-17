@@ -70,11 +70,11 @@ fun callDelayed(delay: Long, runnable: Runnable) {
 
 
 @SuppressLint("Range")
-fun Context.fetchCountries() : MutableList<Country> {
+fun Context.fetchCountries(selection: String?) : MutableList<Country> {
     val countries = mutableListOf<Country>()
     val cursor = contentResolver.query(
         COUNTRY_PROVIDER_CONTENT_URI,
-        null, null, null, null)
+        null, selection, null, null)
     while (cursor != null && cursor.moveToNext()) {
         countries.add(
             Country(

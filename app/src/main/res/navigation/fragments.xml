@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_countries"/>
 
     <fragment
+        android:id="@+id/menuFavorites"
+        android:name="jakupi.arjan.country.FavoriteCountriesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorite_countries"/>
+
+    <fragment
         android:id="@+id/menuAbout"
         android:name="jakupi.arjan.country.AboutFragment"
         android:label="@string/about"

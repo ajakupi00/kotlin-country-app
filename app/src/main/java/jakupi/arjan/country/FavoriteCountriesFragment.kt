@@ -7,21 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import jakupi.arjan.country.adapter.CountryAdapter
+import jakupi.arjan.country.adapter.FavoriteCountryAdapter
+import jakupi.arjan.country.dao.CountryRepository
 import jakupi.arjan.country.databinding.FragmentCountriesBinding
+import jakupi.arjan.country.databinding.FragmentFavoriteCountriesBinding
+import jakupi.arjan.country.factory.getCountryRepository
 import jakupi.arjan.country.framework.fetchCountries
 import jakupi.arjan.country.model.Country
 
-class CountriesFragment : Fragment() {
-    private lateinit var binding: FragmentCountriesBinding
+
+class FavoriteCountriesFragment : Fragment() {
+    private lateinit var binding: FragmentFavoriteCountriesBinding
     private lateinit var countries: MutableList<Country>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        CountryPagerActivity.SELECTION = null
-        countries = requireContext().fetchCountries(null)
-        binding = FragmentCountriesBinding.inflate(inflater, container, false)
+        var selection = "${Country::favorite.name} = 1"
+        CountryPagerActivity.SELECTION = selection
+        countries = requireContext().fetchCountries(selection)
+        binding = FragmentFavoriteCountriesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,9 +35,7 @@ class CountriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvCountries.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = CountryAdapter(requireContext(), countries)
+            adapter = FavoriteCountryAdapter(requireContext(), countries)
         }
     }
-
-
 }

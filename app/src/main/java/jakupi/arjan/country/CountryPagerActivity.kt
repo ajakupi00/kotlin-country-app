@@ -29,10 +29,14 @@ class CountryPagerActivity : AppCompatActivity() {
     }
 
     private fun initPager() {
-        countries = fetchCountries()
+        countries = fetchCountries(SELECTION)
         countryPosition = intent.getIntExtra(POSITION, countryPosition)
         binding.viewPager.adapter = CountryPagerAdapter(this, countries)
         binding.viewPager.currentItem = countryPosition
         binding.viewPager
+    }
+
+    companion object{
+        var SELECTION: String? = null
     }
 }
