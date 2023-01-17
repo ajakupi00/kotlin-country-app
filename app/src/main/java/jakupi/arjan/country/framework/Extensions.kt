@@ -11,8 +11,10 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.ProgressBar
 import androidx.core.content.getSystemService
 import androidx.preference.PreferenceManager
+import androidx.viewbinding.ViewBinding
 import jakupi.arjan.country.COUNTRY_PROVIDER_CONTENT_URI
 import jakupi.arjan.country.HostActivity
 import jakupi.arjan.country.model.Country

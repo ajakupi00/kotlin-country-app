@@ -18,6 +18,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
 
 class CountryFetcher(private val context: Context) {
+    companion object{
+        var PROGRESS_BAR_INDEX = 0
+    }
     private var countryApi: CountryApi
 
     init{
@@ -48,7 +51,8 @@ class CountryFetcher(private val context: Context) {
 
     private fun populateItems(countryItems: List<CountryItem>){
         GlobalScope.launch {
-            countryItems.subList(0, 20).forEachIndexed { index, it ->
+            countryItems.subList(0, 50).forEachIndexed { index, it ->
+                PROGRESS_BAR_INDEX = index
                 var flagPath = downloadImageAndStore(context, it.flags.svg)
                 val values = ContentValues().apply {
                     put(Country::name.name, it.name.official)
@@ -61,7 +65,6 @@ class CountryFetcher(private val context: Context) {
                 }
                 context.contentResolver.insert(COUNTRY_PROVIDER_CONTENT_URI, values)
             }
-
             context.sendBroadcast<CountryReceiver>()
 
         }

@@ -2,8 +2,13 @@ package jakupi.arjan.country
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ProgressBar
+import androidx.core.content.ContentProviderCompat.requireContext
+import jakupi.arjan.country.api.CountryFetcher
 import jakupi.arjan.country.databinding.ActivitySplashScreenBinding
 import jakupi.arjan.country.framework.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 private const val DELAY = 3000L
@@ -17,22 +22,27 @@ class SplashScreenActivity : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.progressBar.max = 50
         displayRandomFunFact()
         redirect()
     }
 
     private fun displayRandomFunFact() {
-        // BIND FUN FACT
-        // APPLY ANIMATIONS
         binding.tvSplash.applyAnimation(R.anim.blink)
         binding.ivSplash.applyAnimation(R.anim.rotate)
     }
 
+
     private fun redirect() {
         if(getBooleanPreference(DATA_IMPORTED)){
-            callDelayed(DELAY) {startActivity<HostActivity>()}
+            callDelayed(DELAY) {startProgressBar()}
         } else{
             if(isOnline()){
+                GlobalScope.launch {
+                    while(!getBooleanPreference(DATA_IMPORTED)){
+                            binding.progressBar.setProgress(CountryFetcher.PROGRESS_BAR_INDEX, true)
+                        }
+                }
                 CountryService.enqueue(this)
             }else {
                 binding.tvSplash.text = "No internet"
@@ -40,5 +50,12 @@ class SplashScreenActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun startProgressBar() {
+        for (i in 0..50){
+            binding.progressBar.setProgress(i, true)
+        }
+        startActivity<HostActivity>()
     }
 }
