@@ -16,6 +16,18 @@
         android:theme="@style/Theme.CountryApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Map"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR API KEY" />
+
+        <activity
             android:name=".CountryPagerActivity"
             android:exported="false">
             <meta-data
@@ -47,13 +59,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
             android:noHistory="true"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,7 +74,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
 
 </manifest>
