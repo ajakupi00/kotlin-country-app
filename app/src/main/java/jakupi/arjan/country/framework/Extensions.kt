@@ -85,6 +85,7 @@ fun Context.fetchCountries(selection: String?) : MutableList<Country> {
                 cursor.getString(cursor.getColumnIndex(Country::timezone.name)),
                 cursor.getString(cursor.getColumnIndex(Country::continents.name)),
                 cursor.getString(cursor.getColumnIndex(Country::flagPath.name)),
+                cursor.getString(cursor.getColumnIndex(Country::latlng.name)),
                 cursor.getInt(cursor.getColumnIndex(Country::favorite.name)) == 1
         ))
     }

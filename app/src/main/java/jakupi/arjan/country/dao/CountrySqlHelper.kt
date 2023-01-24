@@ -18,6 +18,7 @@ private val CREATE_TABLE = "create table $TABLE_NAME( " +
         "${Country::timezone.name} text not null, " +
         "${Country::continents.name} text not null, " +
         "${Country::flagPath.name} text not null, " +
+        "${Country::latlng.name} text not null, " +
         "${Country::favorite.name} integer not null" +
         ")"
 private const val DROP_TABLE = "drop table $TABLE_NAME"

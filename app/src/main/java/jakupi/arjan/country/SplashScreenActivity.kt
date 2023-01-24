@@ -2,6 +2,7 @@ package jakupi.arjan.country
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.airbnb.lottie.LottieDrawable
 import jakupi.arjan.country.api.CountryFetcher
 import jakupi.arjan.country.databinding.ActivitySplashScreenBinding
 import jakupi.arjan.country.framework.*
@@ -27,7 +28,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun displayRandomFunFact() {
         binding.tvSplash.applyAnimation(R.anim.blink)
-        binding.ivSplash.applyAnimation(R.anim.rotate)
+        binding.animationView.setAnimation(R.raw.earth)
+        binding.animationView.repeatCount = LottieDrawable.INFINITE
+        binding.animationView.playAnimation()
+
     }
 
 

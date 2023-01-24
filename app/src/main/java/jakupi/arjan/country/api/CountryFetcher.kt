@@ -54,21 +54,31 @@ class CountryFetcher(private val context: Context) {
         GlobalScope.launch {
             countryItems.subList(0, NUMBER_OF_COUNTRIES_TO_FETCH).forEachIndexed { index, it ->
                 PROGRESS_BAR_INDEX = index
-                var flagPath = downloadImageAndStore(context, it.flags.svg)
-                val values = ContentValues().apply {
-                    put(Country::name.name, it.name.official)
-                    put(Country::capital.name, it.capital[0])
-                    put(Country::population.name, it.population)
-                    put(Country::flagPath.name, flagPath)
-                    put(Country::timezone.name, concatStringArray(it.timezones))
-                    put(Country::continents.name, concatStringArray(it.continents))
-                    put(Country::favorite.name, false)
+                if(it.capital != null){
+                    var flagPath = downloadImageAndStore(context, it.flags.svg)
+                    val values = ContentValues().apply {
+                        put(Country::name.name, it.name.official)
+                        put(Country::capital.name, it.capital[0])
+                        put(Country::population.name, it.population)
+                        put(Country::flagPath.name, flagPath)
+                        put(Country::timezone.name, concatStringArray(it.timezones))
+                        put(Country::continents.name, concatStringArray(it.continents))
+                        put(Country::latlng.name, concatDoubleArray(it.latlng))
+                        put(Country::favorite.name, false)
+                    }
+                    context.contentResolver.insert(COUNTRY_PROVIDER_CONTENT_URI, values)
                 }
-                context.contentResolver.insert(COUNTRY_PROVIDER_CONTENT_URI, values)
             }
             context.sendBroadcast<CountryReceiver>()
-
         }
+    }
+
+    private fun concatDoubleArray(doubleArray: ArrayList<Double>): String? {
+        val sb = StringBuilder();
+        doubleArray.forEach { double ->
+            sb.append(double.toString() + ",")
+        }
+        return sb.toString()
     }
 
     private fun concatStringArray(stringArray: ArrayList<String>): String? {

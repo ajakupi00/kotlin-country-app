@@ -13,5 +13,5 @@
     <dimen name="navViewWidth">162dp</dimen>
     <dimen name="navViewHeight">350dp</dimen>
     <dimen name="paddingAbout">20dp</dimen>
-    <dimen name="textSizeAbout">50sp</dimen>
+    <dimen name="textSizeAbout">40sp</dimen>
 </resources>

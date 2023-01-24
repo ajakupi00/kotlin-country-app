@@ -11,8 +11,8 @@ data class CountryItem (
     @SerializedName("timezones"    ) var timezones    : ArrayList<String>,
     @SerializedName("continents"   ) var continents   : ArrayList<String>,
     @SerializedName("flags"        ) var flags        : Flags,
-
-)
+    @SerializedName("latlng"       ) var latlng       : ArrayList<Double>,
+    )
 
 data class Name(
     @SerializedName("common"     ) var common     : String?     = null,

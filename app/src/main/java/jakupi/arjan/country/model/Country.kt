@@ -8,5 +8,6 @@ data class Country(
     val timezone: String,
     val continents: String,
     val flagPath: String,
+    val latlng: String,
     var favorite: Boolean
 )

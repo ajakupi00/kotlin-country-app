@@ -25,7 +25,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR API KEY" />
+            android:value="YOUR KEY" />
 
         <activity
             android:name=".CountryPagerActivity"

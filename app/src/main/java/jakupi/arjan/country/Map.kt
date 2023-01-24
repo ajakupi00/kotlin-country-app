@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -13,15 +14,18 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import jakupi.arjan.country.databinding.ActivityMapBinding
-
+import jakupi.arjan.country.framework.fetchCountries
+import jakupi.arjan.country.model.Country
 
 class Map : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapBinding
+    private lateinit var countries: MutableList<Country>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        countries = fetchCountries(null)
 
         var mapFragment = getSupportFragmentManager().findFragmentById(R.id.maps) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -31,21 +35,17 @@ class Map : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val zagreb = LatLng(45.815399, 15.966568)
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(zagreb)
-                .title("Zagreb")
-        )
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(zagreb))
-
-        val ljubljana = LatLng(46.056946,14.505752);
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(ljubljana)
-                .title("Ljubljana")
-        )
-
+        countries.forEach{ country ->
+            var details = country.latlng.split(',')
+            var lat = details[0].toDouble()
+            var lng = details[1].toDouble()
+            var latlng = LatLng(lat,lng)
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(latlng)
+                    .title(country.capital)
+            )
+        }
        googleMap.uiSettings.isZoomControlsEnabled = true
     }
 
